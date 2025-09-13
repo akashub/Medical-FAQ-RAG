@@ -1,0 +1,12 @@
+.env
+__pycache__/
+venv/
+env/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+*.log
+*.sqlite3
+chromadb/
+vector_store/
