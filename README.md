@@ -25,7 +25,11 @@ and scalable RAG pipelines. Combines research foundation with industry experienc
 * **Large Knowledge Base:** Powered by the [Comprehensive Medical Q&A Dataset](https://www.kaggle.com/datasets/thedevastator/comprehensive-medical-q-a-dataset), containing over 43,000 question-answer pairs.
 * **Persistent Vector Store:** ChromaDB is used to store document embeddings, ensuring that data is only processed once, leading to fast subsequent startups.
 
+  <img width="1851" height="956" alt="image" src="https://github.com/user-attachments/assets/cc67c8b1-2611-4206-af95-bd15e187ae4e" />
+
 ***
+
+
 
 ## ⚙️ How It Works
 
@@ -38,6 +42,8 @@ The application follows a Retrieval-Augmented Generation (RAG) pipeline to answe
 3.  **Result Fusion (RRF):** The ranked lists of documents from both retrievers are combined using Reciprocal Rank Fusion to produce a single, highly relevant list of context documents.
 4.  **Prompt Augmentation:** The user's original query and the content of the top-ranked documents are formatted into a detailed prompt.
 5.  **Answer Generation:** The augmented prompt is sent to the **Gemini 2.5 Flash** model, which generates a final, human-readable answer.
+
+   <img width="1851" height="956" alt="image" src="https://github.com/user-attachments/assets/967e8a23-6b97-468e-a53f-2ad63257e353" />
 
 ***
 
