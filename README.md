@@ -5,9 +5,11 @@ This project is a sophisticated Medical FAQ Chatbot built using a Retrieval-Augm
 ---
 
 ## Who Am I?
-Hey! I am Aakash Singh. I am a recent BTech CSE graduate specializing in Data Science and AI Research, with expertise in AI Copilots, RAG systems, Deep Learning, production
-ML systems, and LLMs. I completed my semester abroad at University of Florida (GPA: 3.85/4) where I pursued post-grad level courses eventually gaining the prestigious **Achievement Award Scholarship** worth **$4500** with an admit to the prestigious MS in CS at UF. I have a proven track record
-delivering AI solutions including an AI Copilot that boosted SOC efficiency by 60%, research deep learning models,
+Hey! I am Aakash Singh. I am a recent BTech CSE graduate specializing in Data Science and AI Research, with expertise in AI Copilots, RAG systems, Deep Learning, production ML systems, and LLMs. 
+
+I completed my semester abroad at University of Florida (GPA: 3.85/4) where I pursued post-grad level courses eventually gaining the prestigious **Achievement Award Scholarship** worth **$4500** with an admit to the prestigious MS in CS at UF. 
+
+I have a proven track record delivering AI solutions including an AI Copilot that boosted SOC efficiency by 60%, research deep learning models,
 and scalable RAG pipelines. Combines research foundation with industry experience deploying data-driven solutions.
 
 
