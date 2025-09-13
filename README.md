@@ -2,6 +2,14 @@
 
 This project is a sophisticated Medical FAQ Chatbot built using a Retrieval-Augmented Generation (RAG) architecture. It leverages a hybrid search mechanism to provide accurate, context-aware answers to medical questions based on a large knowledge base. The application is built with Python and features an interactive user interface powered by Streamlit.
 
+---
+
+## Who Am I?
+Hey! I am Aakash Singh. I am a recent BTech CSE graduate specializing in Data Science and AI Research, with expertise in AI Copilots, RAG systems, Deep Learning, production
+ML systems, and LLMs. I completed my semester abroad at University of Florida (GPA: 3.85/4) where I pursued post-grad level courses eventually gaining the prestigious **Achievement Award Scholarship** worth **$4500** with an admit to the prestigious MS in CS at UF. I have a proven track record
+delivering AI solutions including an AI Copilot that boosted SOC efficiency by 60%, research deep learning models,
+and scalable RAG pipelines. Combines research foundation with industry experience deploying data-driven solutions.
+
 
 
 ## ✨ Features
@@ -122,6 +130,43 @@ streamlit run app.py
 ```
 
 The application will open in your web browser. The first run will be slow as it processes the 43,000+ documents and builds the vector database. Subsequent runs will be much faster.
+
+---
+
+## 🚀 Potential Pipeline Enhancements
+
+The current implementation uses a solid hybrid search foundation (BM25 + Dense Retrieval). To further enhance its accuracy, robustness, and contextual understanding, the pipeline can be expanded with the following advanced techniques.
+
+### 1. Query Transformation Techniques
+
+The quality of retrieval is highly dependent on the quality of the user's query. These techniques refine the initial query to improve search results.
+
+* **Multi-Query Retriever:** Instead of using a single query, this approach uses an LLM to generate several variations of the user's question from different perspectives. For example, if the user asks, "What are the side effects of paracetamol?", the LLM might generate:
+    1.  "Common adverse reactions to paracetamol"
+    2.  "Long-term effects of taking acetaminophen"
+    3.  "Paracetamol risks and warnings"
+    The pipeline would then retrieve documents for all three queries, creating a richer, more diverse set of results.
+
+* **HyDE (Hypothetical Document Embeddings):** This is a powerful zero-shot technique. Instead of embedding the user's (often short) query, we first ask the LLM to generate a detailed, hypothetical answer to the question. Then, we create an embedding of this *hypothetical document* and use it for the vector search. This often yields more relevant results because the embedding of a full-text document is more likely to be semantically similar to the actual documents in the knowledge base.
+
+### 2. Advanced Fusion and Re-Ranking
+
+Once we have documents from multiple sources (BM25, Dense Search, or multiple queries), we need to intelligently rank them.
+
+* **RAG-Fusion:** This technique builds on the Multi-Query approach. After retrieving documents for each generated query variant, all the results are collected. A re-ranking algorithm, like **Reciprocal Rank Fusion (RRF)**, is then applied to the combined set. This method scores documents based on their rank across the different result lists, pushing the most consistently high-ranked documents to the top. This ensures the final context sent to the LLM is the most relevant and comprehensive.
+
+### 3. Agentic Workflow with Self-Correction
+
+This transforms the linear pipeline into an intelligent agent that can reason about its own results and self-correct, often implemented with a framework like **LangGraph**.
+
+* **The Retrieve-Grade-Correct Loop:**
+    1.  **Retrieve:** Fetch documents using one of the methods above (e.g., RAG-Fusion).
+    2.  **Grade:** A new step is introduced where an LLM acts as a "grader." It examines the retrieved documents and answers a simple question: "Is the information in these documents relevant to the user's original question?"
+    3.  **Conditional Logic (The "Agent" part):**
+        * **If Relevant:** The documents are passed to the final LLM to generate the answer for the user.
+        * **If Not Relevant:** The agent decides the retrieval failed. It can then trigger a corrective action, such as using a different query transformation technique (e.g., applying HyDE if it started with Multi-Query) and **looping back to the retrieve step**. This cycle continues until relevant documents are found or a maximum number of attempts is reached.
+
+This self-correcting loop makes the system incredibly robust and resilient to ambiguous user questions or initial retrieval failures.
 
 ---
 
